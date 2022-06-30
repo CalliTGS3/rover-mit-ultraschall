@@ -18,7 +18,7 @@ function Messung1 () {
         basic.pause(20)
     }
     Liste1.sort()
-Median1 = Liste1[2]
+Entfernung1 = Liste1[2]
 }
 function Messung2 () {
     Liste2 = []
@@ -40,13 +40,11 @@ function Messung2 () {
         basic.pause(20)
     }
     Liste2.sort()
-Median2 = Liste2[2]
+Entfernung2 = Liste2[2]
 }
 let Richtung = 0
-let Median2 = 0
 let Entfernung2 = 0
 let Pulsdauer2 = 0
-let Median1 = 0
 let Entfernung1 = 0
 let Pulsdauer1 = 0
 let Liste1: number[] = []
@@ -56,8 +54,8 @@ let Kurvendauer = 100
 let Kurvenanzahl = 5
 let Geschwindigkeit = 60
 basic.forever(function () {
-    Entfernung1 = Median1
-    Entfernung2 = Median2
+    Messung1()
+    Messung2()
     if (Entfernung1 > Schwellwert && Entfernung2 > Schwellwert) {
         motors.dualMotorPower(Motor.AB, Geschwindigkeit)
         basic.setLedColor(0x00ff00)
@@ -92,8 +90,4 @@ basic.forever(function () {
             }
         }
     }
-})
-basic.forever(function () {
-    Messung1()
-    Messung2()
 })
